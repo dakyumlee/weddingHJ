@@ -3,144 +3,302 @@
 <head>
   <meta charset="UTF-8" />
   <title>방명록 관리자 페이지</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #fefefe;
-      color: #2a2a2a;
+      font-family: 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #f8f4f0 0%, #ede7e0 50%, #f0ebe5 100%);
+      color: #2c3e50;
       padding: 2rem;
       text-align: center;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
+      min-height: 100vh;
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: #1a1a1a;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #8b7355;
       margin-bottom: 3rem;
-      letter-spacing: -0.01em;
+      text-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
     }
 
-    #messages {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(212, 184, 150, 0.3);
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #8b7355;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid rgba(212, 184, 150, 0.3);
+      padding-bottom: 0.5rem;
     }
 
     .msg {
-      background: #f9f9f9;
-      border: 1px solid #f0f0f0;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.8);
       padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #8b7355;
       text-align: left;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .msg:hover {
-      background: #f5f5f5;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background: white;
     }
 
     .msg strong {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #2a2a2a;
+      font-size: 1.1rem;
+      color: #8b7355;
       margin-bottom: 0.5rem;
       display: block;
+      font-weight: 500;
     }
 
     .msg-content {
-      font-size: 0.95rem;
-      color: #4a4a4a;
+      color: #2c3e50;
       margin-bottom: 1rem;
-      line-height: 1.4;
+      line-height: 1.6;
+    }
+
+    .msg-meta {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
     }
 
     button {
-      background: #2a2a2a;
-      color: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 0.6rem 1.2rem;
+      background: #e74c3c;
+      color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 2px;
-      font-size: 0.85rem;
-      font-weight: 500;
+      border-radius: 25px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
     }
 
     button:hover {
-      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+      background: #c0392b;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #8b7355;
+      font-style: italic;
+      padding: 2rem;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(139, 115, 85, 0.3);
+      border-radius: 50%;
+      border-top-color: #8b7355;
+      animation: spin 1s ease-in-out infinite;
+      margin: 2rem auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .back-btn {
+      background: #8b7355;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      display: inline-block;
+      color: white;
+    }
+
+    .back-btn:hover {
+      background: #6d5a44;
+      color: white;
     }
 
     @media (max-width: 768px) {
       body {
-        padding: 1.5rem;
+        padding: 1rem;
       }
       
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 2rem;
       }
       
-      #messages {
-        max-width: 100%;
+      .section {
+        padding: 1.5rem;
+        margin: 1rem auto;
+      }
+      
+      .msg {
+        padding: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>방명록 관리</h1>
-  <div id="messages"></div>
+  <a href="index.html" class="back-btn">← 청첩장으로 돌아가기</a>
+  <h1>💌 방명록 관리</h1>
+  
+  <div class="section">
+    <h2>축하 메시지</h2>
+    <div id="guestbook-messages">
+      <div class="loading"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>참석 여부 (RSVP)</h2>
+    <div id="rsvp-messages">
+      <div class="loading"></div>
+    </div>
+  </div>
 
   <script type="module">
-    import { db } from './firebase.js';
-    import {
-      collection, getDocs, deleteDoc, doc, query, orderBy
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbp3j05DdHk9JtxTYHs7q03otwdPfDkmI",
+      authDomain: "wedding-6c770.firebaseapp.com",
+      projectId: "wedding-6c770",
+      storageBucket: "wedding-6c770.firebasestorage.app",
+      messagingSenderId: "100162941105",
+      appId: "1:100162941105:web:3a02dea657d09326c6f290",
+      measurementId: "G-D8S6495EG7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
     const ADMIN_PASSWORD = "2603221201";
     const input = prompt("관리자 비밀번호를 입력해주세요");
     if (input !== ADMIN_PASSWORD) {
       alert("비밀번호가 틀렸습니다. 돌아갑니다.");
-      window.location.href = "/";
+      window.location.href = "index.html";
     }
 
-    const listEl = document.getElementById('messages');
-    const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
-    const snapshot = await getDocs(q);
+    async function loadGuestbook() {
+      const container = document.getElementById('guestbook-messages');
+      try {
+        const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+        const snapshot = await getDocs(q);
+        
+        container.innerHTML = '';
+        
+        if (snapshot.empty) {
+          container.innerHTML = '<div class="empty-state">아직 방명록 메시지가 없습니다.</div>';
+          return;
+        }
 
-    snapshot.forEach(docSnap => {
-      const data = docSnap.data();
-      const div = document.createElement('div');
-      div.className = 'msg';
-      div.innerHTML = `
-        <strong>${data.name}</strong>: ${data.message}
-        <br><button data-id="${docSnap.id}">삭제</button>
-      `;
-      listEl.appendChild(div);
-    });
+        snapshot.forEach(docSnap => {
+          const data = docSnap.data();
+          const div = document.createElement('div');
+          div.className = 'msg';
+          
+          const timestamp = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString('ko-KR') : '시간 정보 없음';
+          
+          div.innerHTML = `
+            <strong>${data.name}</strong>
+            <div class="msg-content">${data.message}</div>
+            <div class="msg-meta">작성일: ${timestamp}</div>
+            <button data-id="${docSnap.id}" data-type="guestbook">삭제</button>
+          `;
+          container.appendChild(div);
+        });
+      } catch (error) {
+        console.error('방명록 로드 실패:', error);
+        container.innerHTML = '<div class="empty-state">방명록을 불러오는데 실패했습니다.</div>';
+      }
+    }
 
-    listEl.addEventListener('click', async (e) => {
-      if (e.target.tagName === 'BUTTON') {
+    async function loadRSVP() {
+      const container = document.getElementById('rsvp-messages');
+      try {
+        const q = query(collection(db, "rsvp"), orderBy("timestamp", "desc"));
+        const snapshot = await getDocs(q);
+        
+        container.innerHTML = '';
+        
+        if (snapshot.empty) {
+          container.innerHTML = '<div class="empty-state">아직 RSVP가 없습니다.</div>';
+          return;
+        }
+
+        snapshot.forEach(docSnap => {
+          const data = docSnap.data();
+          const div = document.createElement('div');
+          div.className = 'msg';
+          
+          const timestamp = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString('ko-KR') : '시간 정보 없음';
+          
+          div.innerHTML = `
+            <strong>${data.name}</strong>
+            <div class="msg-content">
+              <strong>참석 여부:</strong> ${data.attendance}<br>
+              ${data.note ? `<strong>메모:</strong> ${data.note}` : ''}
+            </div>
+            <div class="msg-meta">제출일: ${timestamp}</div>
+            <button data-id="${docSnap.id}" data-type="rsvp">삭제</button>
+          `;
+          container.appendChild(div);
+        });
+      } catch (error) {
+        console.error('RSVP 로드 실패:', error);
+        container.innerHTML = '<div class="empty-state">RSVP를 불러오는데 실패했습니다.</div>';
+      }
+    }
+
+    document.addEventListener('click', async (e) => {
+      if (e.target.tagName === 'BUTTON' && e.target.dataset.id) {
         const id = e.target.dataset.id;
-        const ok = confirm("정말 삭제할까요?");
+        const type = e.target.dataset.type;
+        const ok = confirm("정말 삭제하시겠습니까?");
+        
         if (ok) {
-          await deleteDoc(doc(db, "guestbook", id));
-          e.target.closest('.msg').remove();
+          try {
+            await deleteDoc(doc(db, type, id));
+            e.target.closest('.msg').remove();
+            
+            const container = document.getElementById(`${type}-messages`);
+            if (container.children.length === 0) {
+              container.innerHTML = `<div class="empty-state">아직 ${type === 'guestbook' ? '방명록 메시지' : 'RSVP'}가 없습니다.</div>`;
+            }
+          } catch (error) {
+            console.error('삭제 실패:', error);
+            alert('삭제에 실패했습니다.');
+          }
         }
       }
     });
+
+    loadGuestbook();
+    loadRSVP();
   </script>
 </body>
 </html>
-
