@@ -3,111 +3,654 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>지훈&혜주 결혼합니다</title>
-  <link rel="stylesheet" href="style.css" />
-
+  <title>지훈 & 혜주</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'ghanachoco';
-      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fefefe;
+      color: #2a2a2a;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100vw;
+    }
+
+    .slide {
+      flex: 0 0 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .content {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 7vw, 3.8rem);
+      font-weight: 300;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-image {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 2px;
+      margin: 2rem 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .dday {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #666;
+      margin-top: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .text-large {
+      font-size: 1.1rem;
+      color: #4a4a4a;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .text-medium {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .highlight-card {
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .date-main {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #2a2a2a;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-main {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .list-clean {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .list-item {
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 2px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .list-item:hover {
+      background: #f5f5f5;
+    }
+
+    .item-label {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #3a3a3a;
+    }
+
+    .btn-minimal {
+      background: #2a2a2a;
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-minimal:hover {
+      background: #1a1a1a;
+    }
+
+    .account-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .account-item {
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .account-type {
+      font-size: 0.8rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .account-number {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #2a2a2a;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-clean {
+      list-style: none;
+      margin-top: 2rem;
+      padding-left: 1rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 2rem;
+      align-items: baseline;
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: #999;
+      font-weight: 500;
+      min-width: 100px;
+    }
+
+    .timeline-event {
+      font-size: 1rem;
+      color: #4a4a4a;
+      margin-left: 2rem;
+    }
+
+    .form-clean {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .input-clean, .textarea-clean, .select-clean {
+      background: #f9f9f9;
+      border: 1px solid #e8e8e8;
+      border-radius: 2px;
+      padding: 1rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #2a2a2a;
+      transition: all 0.2s ease;
+    }
+
+    .input-clean:focus, .textarea-clean:focus, .select-clean:focus {
+      outline: none;
+      border-color: #ccc;
+      background: #ffffff;
+    }
+
+    .textarea-clean {
+      height: 100px;
+      resize: none;
+    }
+
+    .btn-primary {
+      background: #2a2a2a;
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #1a1a1a;
+    }
+
+    .messages-area {
+      max-height: 280px;
+      overflow-y: auto;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+    }
+
+    .message-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 2px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .message-author {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .message-text {
+      font-size: 0.9rem;
+      color: #4a4a4a;
+      line-height: 1.4;
+    }
+
+    .map-wrapper {
+      margin-top: 2rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .qr-section {
+      margin-top: 2rem;
+      padding: 2.5rem;
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .qr-image {
+      width: 150px;
+      height: 150px;
+      margin-top: 1.5rem;
+      border-radius: 2px;
+    }
+
+    .nav-controls {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 50%;
+      color: #2a2a2a;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-btn:hover {
+      background: #f5f5f5;
+      border-color: #ddd;
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 1.5rem;
+      }
+      
+      .hero-image {
+        width: 260px;
+        height: 350px;
+      }
+      
+      .nav-controls {
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+    }
+
+    .messages-area::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .messages-area::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .messages-area::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 2px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #1a1a1a;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content {
+      animation: fadeIn 0.6s ease-out;
     }
   </style>
 </head>
 <body>
-  <div class="slider">
-    <section class="slide cover-slide">
-      <h1><a href="admin.html">혜주 & 지훈</a></h1>
-      <img src="wedding.jpeg" alt="커플 사진" class="cover-photo" />
-      <div id="d-day" class="dday-text"></div>
+  <div class="slider" id="slider">
+    <section class="slide">
+      <div class="content">
+        <div class="subtitle">Wedding Invitation</div>
+        <h1><a href="admin.html">혜주 & 지훈</a></h1>
+        <img src="wedding.jpeg" alt="Wedding Photo" class="hero-image" />
+        <div id="d-day" class="dday"></div>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>소중한 당신을 초대합니다</h2>
-      <p>우리의 새로운 시작에 함께해 주세요.</p>
-      <p>2026년 3월 22일 일요일 오후 1시 30분<br />센텀한샘빌딩 7층</p>
+      <div class="content">
+        <h2>함께해 주세요</h2>
+        <p class="text-large">사랑하는 두 사람이 평생을 함께하기로 약속하는<br>소중한 순간에 여러분을 초대합니다</p>
+        <div class="highlight-card">
+          <div class="date-main">2026년 3월 22일 일요일 오후 1시 30분</div>
+          <div class="location-main">센텀한샘빌딩 7층</div>
+        </div>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>연락처</h2>
-      <ul>
-        <li>신랑 허지훈: <button onclick="copyText('01083511350')">복사</button></li>
-        <li>신부 맹혜주: <button onclick="copyText('01023885457')">복사</button></li>
-        <li>박후남: <button onclick="copyText('01044195456')">복사</button></li>
-        <li>맹대원: <button onclick="copyText('01047425456')">복사</button></li>
-      </ul>
+      <div class="content">
+        <h2>연락처</h2>
+        <ul class="list-clean">
+          <li class="list-item">
+            <span class="item-label">신랑 허지훈</span>
+            <button class="btn-minimal" onclick="copyText('01083511350')">복사</button>
+          </li>
+          <li class="list-item">
+            <span class="item-label">신부 맹혜주</span>
+            <button class="btn-minimal" onclick="copyText('01023885457')">복사</button>
+          </li>
+          <li class="list-item">
+            <span class="item-label">박후남</span>
+            <button class="btn-minimal" onclick="copyText('01044195456')">복사</button>
+          </li>
+          <li class="list-item">
+            <span class="item-label">맹대원</span>
+            <button class="btn-minimal" onclick="copyText('01047425456')">복사</button>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>마음 전하실 곳</h2>
-      <p>신랑: 카카오 3333-12-1234567 <button onclick="copyText('3333-12-1234567')">복사</button></p>
-      <p>신부: 신한 110-234-567890 <button onclick="copyText('110-234-567890')">복사</button></p>
+      <div class="content">
+        <h2>마음 전하실 곳</h2>
+        <div class="account-grid">
+          <div class="account-item">
+            <div class="account-type">신랑측</div>
+            <div class="account-number">카카오뱅크 3333-12-1234567</div>
+            <button class="btn-minimal" onclick="copyText('3333-12-1234567')">계좌 복사</button>
+          </div>
+          <div class="account-item">
+            <div class="account-type">신부측</div>
+            <div class="account-number">신한은행 110-234-567890</div>
+            <button class="btn-minimal" onclick="copyText('110-234-567890')">계좌 복사</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>우리가 걸어온 길</h2>
-      <ul class="timeline">
-        <li><span>2022/11</span> 첫 만남</li>
-        <li><span>2022/12</span> 고백</li>
-        <li><span>2026/03</span> 결혼 예정</li>
-      </ul>
+      <div class="content">
+        <h2>우리의 이야기</h2>
+        <ul class="timeline-clean">
+          <li class="timeline-item">
+            <span class="timeline-date">2022년 11월</span>
+            <span class="timeline-event">첫 만남</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-date">2022년 12월</span>
+            <span class="timeline-event">연인이 되다</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-date">2026년 3월</span>
+            <span class="timeline-event">결혼</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>오시는 길</h2>
-      <p>센텀한샘빌딩 7층<br />부산광역시 해운대구 센텀1로 25</p>
-      <p>2호선 센텀시티역 13번 출구<br />지하주차장 사용 가능</p>
-      <br />
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.97137246105603!2d129.13197887795303!3d35.16645913363622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892c7a4db12a5%3A0x8a790c5c9e700b13!2z7IS87YWA7ZWc7IOY67mM65Sp!5e0!3m2!1sko!2skr!4v1751439778814!5m2!1sko!2skr"
-        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="content">
+        <h2>오시는 길</h2>
+        <div class="highlight-card">
+          <div class="date-main">센텀한샘빌딩 7층</div>
+          <div class="location-main">부산광역시 해운대구 센텀1로 25<br>지하철 2호선 센텀시티역 13번 출구<br>지하주차장 이용 가능</div>
+        </div>
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.97137246105603!2d129.13197887795303!3d35.16645913363622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892c7a4db12a5%3A0x8a790c5c9e700b13!2z7IS87YWA7ZWc7IOY67mM65Sp!5e0!3m2!1sko!2skr!4v1751439778814!5m2!1sko!2skr"
+            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>참석 여부 알려주세요</h2>
-      <form id="rsvp-form">
-        <input type="text" placeholder="이름" required />
-        <select required>
-          <option value="">선택</option>
-          <option value="참석">참석</option>
-          <option value="불참">불참</option>
-        </select>
-        <button type="submit">제출</button>
-      </form>
+      <div class="content">
+        <h2>참석 여부</h2>
+        <form class="form-clean" id="rsvp-form">
+          <input type="text" class="input-clean" placeholder="이름을 입력해 주세요" required />
+          <select class="select-clean" required>
+            <option value="">참석 여부를 선택해 주세요</option>
+            <option value="참석">참석하겠습니다</option>
+            <option value="불참">참석하기 어렵습니다</option>
+          </select>
+          <button type="submit" class="btn-primary">확인</button>
+        </form>
+      </div>
     </section>
 
     <section class="slide">
-      <h2>축하 메시지 남기기</h2>
-      <form id="guestbook-form">
-        <input type="text" placeholder="이름" required />
-        <textarea placeholder="메시지" required></textarea>
-        <button type="submit">작성</button>
-      </form>
-      <ul id="guestbook-list"></ul>
+      <div class="content">
+        <h2>축하 메시지</h2>
+        <form class="form-clean" id="message-form">
+          <input type="text" class="input-clean" placeholder="이름" required />
+          <textarea class="textarea-clean" placeholder="축하 메시지를 남겨주세요" required></textarea>
+          <button type="submit" class="btn-primary">메시지 남기기</button>
+        </form>
+        <div class="messages-area" id="messages"></div>
+      </div>
     </section>
 
     <section class="slide">
-        <h2>청첩장 공유</h2>
-        <p>QR 코드를 스캔해서 이 페이지를 공유할 수 있어요</p>
-        <img
-          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wedding-hj.vercel.app/"
-          alt="청첩장 QR코드"
-          style="margin-top: 1rem; border-radius: 8px;" />
-      </section>
-      
+      <div class="content">
+        <h2>초대장 공유</h2>
+        <div class="qr-section">
+          <p class="text-medium">QR 코드를 스캔하여 초대장을 공유해 보세요</p>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wedding-hj.vercel.app/" alt="QR Code" class="qr-image" />
+        </div>
+      </div>
+    </section>
   </div>
 
-
-  
-  
   <nav class="nav-controls">
-    <button onclick="prevSlide()">←</button>
-    <button onclick="nextSlide()">→</button>
+    <button class="nav-btn" onclick="prevSlide()">←</button>
+    <button class="nav-btn" onclick="nextSlide()">→</button>
   </nav>
 
-  <audio src="falling.mp3" autoplay loop></audio>
+  <audio src="Gareth Donkin - Falling For You (Official Audio).mp3" autoplay loop></audio>
 
-  <script type="module" src="script.js"></script>
+  <script>
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function updateSlide() {
+      slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function updateDday() {
+      const wedding = new Date('2026-03-22T13:30:00');
+      const now = new Date();
+      const days = Math.ceil((wedding - now) / (1000 * 60 * 60 * 24));
+      const ddayEl = document.getElementById('d-day');
+      if (ddayEl) {
+        ddayEl.textContent = `D-${days > 0 ? days : 'Day'}`;
+      }
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('복사되었습니다');
+      }).catch(() => {
+        showToast('복사에 실패했습니다');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #2a2a2a;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 2px;
+        font-size: 0.9rem;
+        z-index: 1000;
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+
+    document.getElementById('rsvp-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('RSVP가 제출되었습니다');
+      e.target.reset();
+    });
+
+    document.getElementById('message-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('input').value.trim();
+      const message = form.querySelector('textarea').value.trim();
+      
+      if (name && message) {
+        const container = document.getElementById('messages');
+        const card = document.createElement('div');
+        card.className = 'message-card';
+        card.innerHTML = `
+          <div class="message-author">${name}</div>
+          <div class="message-text">${message}</div>
+        `;
+        container.insertBefore(card, container.firstChild);
+        form.reset();
+        showToast('메시지가 등록되었습니다');
+      }
+    });
+
+    let startX = 0;
+    slider?.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+
+    slider?.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateDday();
+      updateSlide();
+    });
+
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+    window.copyText = copyText;
+  </script>
 </body>
 </html>

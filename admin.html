@@ -3,38 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <title>방명록 관리자 페이지</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-        font-family: 'ghanachoco';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      text-align: center;
-      font-family: 'ghanachoco';
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fefefe;
+      color: #2a2a2a;
       padding: 2rem;
-      background: #fff0f5;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
     }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+
+    #messages {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     .msg {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: left;
+      transition: all 0.2s ease;
     }
+
+    .msg:hover {
+      background: #f5f5f5;
+    }
+
+    .msg strong {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2a2a2a;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .msg-content {
+      font-size: 0.95rem;
+      color: #4a4a4a;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
     button {
-      background: crimson;
-      color: white;
+      background: #2a2a2a;
+      color: #ffffff;
       border: none;
-      padding: 0.3rem 0.6rem;
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: #1a1a1a;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      #messages {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>💌 방명록 관리</h1>
+  <h1>방명록 관리</h1>
   <div id="messages"></div>
 
   <script type="module">
@@ -78,3 +143,4 @@
   </script>
 </body>
 </html>
+
