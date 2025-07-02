@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>방명록 관리자 페이지</title>
+  <style>
+    @font-face {
+        font-family: 'ghanachoco';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+    body {
+      text-align: center;
+      font-family: 'ghanachoco';
+      padding: 2rem;
+      background: #fff0f5;
+    }
+    .msg {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 방명록 관리</h1>
+  <div id="messages"></div>
+
+  <script type="module">
+    import { db } from './firebase.js';
+    import {
+      collection, getDocs, deleteDoc, doc, query, orderBy
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const ADMIN_PASSWORD = "2603221201";
+    const input = prompt("관리자 비밀번호를 입력해주세요");
+    if (input !== ADMIN_PASSWORD) {
+      alert("비밀번호가 틀렸습니다. 돌아갑니다.");
+      window.location.href = "/";
+    }
+
+    const listEl = document.getElementById('messages');
+    const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      const div = document.createElement('div');
+      div.className = 'msg';
+      div.innerHTML = `
+        <strong>${data.name}</strong>: ${data.message}
+        <br><button data-id="${docSnap.id}">삭제</button>
+      `;
+      listEl.appendChild(div);
+    });
+
+    listEl.addEventListener('click', async (e) => {
+      if (e.target.tagName === 'BUTTON') {
+        const id = e.target.dataset.id;
+        const ok = confirm("정말 삭제할까요?");
+        if (ok) {
+          await deleteDoc(doc(db, "guestbook", id));
+          e.target.closest('.msg').remove();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
