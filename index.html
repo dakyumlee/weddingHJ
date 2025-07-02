@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>혜주와 지훈의 결혼식</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    @font-face {
+      font-family: 'ghanachoco';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <section class="slide cover-slide">
+      <h1>혜주 & 지훈</h1>
+      <img src="wedding.jpeg" alt="커플 사진" class="cover-photo" />
+      <div id="d-day" class="dday-text"></div>
+    </section>
+
+    <section class="slide">
+      <h2>소중한 당신을 초대합니다</h2>
+      <p>우리의 새로운 시작에 함께해 주세요.</p>
+      <p>2026년 3월 22일 일요일 오후 1시 30분<br />센텀한샘빌딩 7층</p>
+    </section>
+
+    <section class="slide">
+      <h2>연락처</h2>
+      <ul>
+        <li>신랑 허지훈: <button onclick="copyText('01083511350')">복사</button></li>
+        <li>신부 맹혜주: <button onclick="copyText('01023885457')">복사</button></li>
+        <li>박후남: <button onclick="copyText('01044195456')">복사</button></li>
+        <li>맹대원: <button onclick="copyText('01047425456')">복사</button></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>마음 전하실 곳</h2>
+      <p>신랑: 카카오 3333-12-1234567 <button onclick="copyText('3333-12-1234567')">복사</button></p>
+      <p>신부: 신한 110-234-567890 <button onclick="copyText('110-234-567890')">복사</button></p>
+    </section>
+
+    <section class="slide">
+      <h2>우리가 걸어온 길</h2>
+      <ul class="timeline">
+        <li><span>2022/11</span> 첫 만남</li>
+        <li><span>2022/12</span> 고백</li>
+        <li><span>2026/03</span> 결혼 예정</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>오시는 길</h2>
+      <p>센텀한샘빌딩 7층<br />부산광역시 해운대구 센텀1로 25</p>
+      <p>2호선 센텀시티역 13번 출구<br />지하주차장 사용 가능</p>
+      <br />
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.97137246105603!2d129.13197887795303!3d35.16645913363622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892c7a4db12a5%3A0x8a790c5c9e700b13!2z7IS87YWA7ZWc7IOY67mM65Sp!5e0!3m2!1sko!2skr!4v1751439778814!5m2!1sko!2skr"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="slide">
+      <h2>참석 여부 알려주세요</h2>
+      <form id="rsvp-form">
+        <input type="text" placeholder="이름" required />
+        <select required>
+          <option value="">선택</option>
+          <option value="참석">참석</option>
+          <option value="불참">불참</option>
+        </select>
+        <button type="submit">제출</button>
+      </form>
+    </section>
+
+    <section class="slide">
+      <h2>축하 메시지 남기기</h2>
+      <form id="guestbook-form">
+        <input type="text" placeholder="이름" required />
+        <textarea placeholder="메시지" required></textarea>
+        <button type="submit">작성</button>
+      </form>
+      <ul id="guestbook-list"></ul>
+    </section>
+  </div>
+
+  <nav class="nav-controls">
+    <button onclick="prevSlide()">←</button>
+    <button onclick="nextSlide()">→</button>
+  </nav>
+
+  <audio src="falling.mp3" autoplay loop></audio>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
