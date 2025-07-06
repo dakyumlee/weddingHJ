@@ -2,19 +2,29 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title>지훈 & 혜주 결혼합니다</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mobile.css" media="screen and (max-width: 767px)">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  
   body {
-    font-family: 'NanumMyeongjo', serif;
-    font-size: 17px;
+    font-family: 'Nanum Myeongjo', serif;
     background: linear-gradient(to bottom right, #f3ebe5, #e9dfd8);
     color: #3a2d25;
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .slider-wrapper {
@@ -24,12 +34,14 @@
     overflow: hidden;
     z-index: 2;
   }
+  
   .slider {
     display: flex;
     width: 600%;
     height: 100%;
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
+  
   .slide {
     flex: 0 0 100vw;
     height: 100vh;
@@ -37,10 +49,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     overflow-y: auto;
     position: relative;
+    -webkit-overflow-scrolling: touch;
   }
   
   .slide.active * {
@@ -58,73 +71,255 @@
     }
   }
 
-.slide h2 {
-  font-family: 'NanumMyeongjo', serif;
-  font-size: 1.6rem;
-  color: #3a2d25;
-  margin-bottom: 1.2rem;
-}
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: #2c2218;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: #2c2218;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+  }
 
-.slide p {
-  font-family: 'NanumMyeongjo', serif;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #40332d;
-}
+  p {
+    font-size: clamp(0.9rem, 3vw, 1.05rem);
+    line-height: 1.8;
+    color: #40332d;
+    margin-bottom: 0.8rem;
+  }
 
-details summary {
-  background: #efe2d9;
-  color: #3a2d25;
-  font-family: 'NanumMyeongjo', serif;
-  font-size: 1.05rem;
-  border-radius: 20px;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  width: fit-content;
-  margin: 2rem auto 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+    
+    .slide {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+    
+    h2 {
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .nav-buttons {
+      padding: 0 1rem;
+      bottom: 15px;
+    }
+    
+    .nav-buttons button {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    
+    iframe {
+      height: 200px !important;
+      width: 100% !important;
+    }
+    
+    .timeline-container {
+      max-width: 100%;
+      margin: 1rem auto;
+      padding: 1rem 0;
+    }
+    
+    .timeline-item {
+      padding-left: 40px;
+      margin: 1.5rem 0;
+    }
+    
+    .timeline::before {
+      left: 14px;
+    }
+    
+    .timeline-icon {
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+    }
+    
+    .timeline-content {
+      padding: 1rem;
+    }
+    
+    .timeline-date {
+      font-size: 0.9rem;
+    }
+    
+    .timeline-description {
+      font-size: 0.85rem;
+    }
+    
+    .rsvp-form, .guest-form {
+      width: 95%;
+      max-width: 350px;
+    }
+    
+    .rsvp-form input, .rsvp-form textarea, .rsvp-form select,
+    .guest-form input, .guest-form textarea {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      margin: 0.4rem 0;
+    }
+    
+    .copy-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+    
+    details summary {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    details > div {
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    details h3 {
+      font-size: 1rem;
+    }
+    
+    #dday {
+      top: 10px;
+      right: 10px;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+    
+    #musicBarContainer {
+      bottom: 15px;
+      gap: 8px;
+    }
+    
+    #musicBar {
+      width: 150px;
+      height: 30px;
+    }
+    
+    .wave-bar {
+      width: 2px;
+    }
+  }
 
-details[open] summary {
-  background: #e0d3ca;
-}
+  @media screen and (max-width: 480px) {
+    .slide {
+      padding: 0.8rem;
+    }
+    
+    h1 {
+      font-size: 1.4rem;
+    }
+    
+    h2 {
+      font-size: 1.2rem;
+    }
+    
+    iframe {
+      height: 180px !important;
+    }
+    
+    .nav-buttons button {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+    
+    .timeline-item {
+      padding-left: 35px;
+    }
+    
+    .timeline-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 0.6rem;
+      left: 6px;
+    }
+    
+    .timeline::before {
+      left: 14px;
+    }
+  }
 
-.copy-btn {
-  background: #a57e65;
-  color: white;
-  border: none;
-  padding: 0.45rem 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.3s ease;
-}
+  details summary {
+    background: #efe2d9;
+    color: #3a2d25;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    width: fit-content;
+    margin: 2rem auto 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: none;
+    outline: none;
+  }
 
-.copy-btn:hover {
-  background: #7a5b48;
-}
+  details[open] summary {
+    background: #e0d3ca;
+  }
 
-details > div {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
+  .copy-btn {
+    background: #a57e65;
+    color: white;
+    border: none;
+    padding: 0.45rem 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    transition: background 0.3s ease;
+    font-family: 'Nanum Myeongjo', serif;
+    margin: 0.2rem;
+    display: inline-block;
+  }
 
-details h3 {
-  font-family: 'NanumMyeongjo', serif;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: #3a2d25;
-}
+  .copy-btn:hover, .copy-btn:active {
+    background: #7a5b48;
+  }
 
-details p {
-  margin: 0.4rem 0;
-}
+  details > div {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  details h3 {
+    font-family: 'Nanum Myeongjo', serif;
+    margin-bottom: 0.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: #3a2d25;
+  }
+
+  details p {
+    margin: 0.4rem 0;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
 
   .nav-buttons {
-    font-family: 'NanumMyeongjo', serif;
+    font-family: 'Nanum Myeongjo', serif;
     position: absolute;
     bottom: 24px;
     width: 100%;
@@ -133,64 +328,45 @@ details p {
     padding: 0 2rem;
     z-index: 10;
   }
-  .nav-buttons button, .copy-btn {
+  
+  .nav-buttons button {
     background: #6b5344;
     color: white;
     border: none;
     padding: 0.7rem 1.6rem;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
     cursor: pointer;
-    font-family: 'NanumMyeongjo', serif;
+    font-family: 'Nanum Myeongjo', serif;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  .nav-buttons button::before, .copy-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.1);
-    transition: left 0.5s;
-  }
-  
-  .nav-buttons button:hover::before, .copy-btn:hover::before {
-    left: 100%;
-  }
-  
-  .copy-btn {
-    margin-top: 0.5rem;
-    background: #8b6f5a;
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-  }
-  
-  .copy-btn:hover, .nav-buttons button:hover {
+  .nav-buttons button:active {
     background: #4a3d32;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
   }
 
   .rsvp-form, .guest-form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     max-width: 400px;
   }
+  
   .rsvp-form input, .rsvp-form textarea, .rsvp-form select,
   .guest-form input, .guest-form textarea {
     margin: 0.5rem 0;
     padding: 1rem;
     border: 1px solid #d4c5b9;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
     transition: all 0.3s ease;
     background: white;
+    font-family: 'Nanum Myeongjo', serif;
   }
   
   .rsvp-form input:focus, .rsvp-form textarea:focus, .rsvp-form select:focus,
@@ -208,37 +384,17 @@ details p {
     padding: 1rem;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-family: 'Nanum Myeongjo', serif;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  .rsvp-form button:hover, .guest-form button:hover {
+  .rsvp-form button:active, .guest-form button:active {
     background: #4a3d32;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  h1, h2 {
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    color: #2c2218;
-    font-weight: normal;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: #2c2218;
-    font-weight: normal;
-  }
-  
-  p, li {
-    line-height: 1.8;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    transform: scale(0.98);
   }
 
   .timeline-container {
@@ -308,38 +464,38 @@ details p {
   .timeline-date {
     font-weight: bold;
     color: #2c2218;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
     margin-bottom: 0.3rem;
   }
   
   .timeline-description {
     color: #4a3d32;
     line-height: 1.5;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
   }
 
   .timeline-entry {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeSlideUp 1s ease forwards;
-}
-.timeline-entry:nth-child(1) { animation-delay: 0.2s; }
-.timeline-entry:nth-child(2) { animation-delay: 0.6s; }
-.timeline-entry:nth-child(3) { animation-delay: 1s; }
-
-@keyframes fadeSlideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideUp 1s ease forwards;
   }
-}
+  
+  .timeline-entry:nth-child(1) { animation-delay: 0.2s; }
+  .timeline-entry:nth-child(2) { animation-delay: 0.6s; }
+  .timeline-entry:nth-child(3) { animation-delay: 1s; }
 
+  @keyframes fadeSlideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   #dday {
     position: absolute;
     top: 20px;
     right: 24px;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
     font-weight: bold;
     z-index: 10;
     background: white;
@@ -362,7 +518,7 @@ details p {
   }
   
   #musicIcon {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: #2c2218;
   }
   
@@ -375,10 +531,6 @@ details p {
     align-items: center;
     justify-content: space-around;
     gap: 2px;
-  }
-  
-  #musicProgress {
-    display: none;
   }
   
   .wave-bar {
@@ -412,6 +564,8 @@ details p {
   .slide img {
     transition: all 0.3s ease;
     border: 1px solid #d4c5b9;
+    max-width: 100%;
+    height: auto;
   }
   
   .slide img:hover {
@@ -439,6 +593,24 @@ details p {
       transform: translateY(0);
     }
   }
+
+  @supports (-webkit-touch-callout: none) {
+    body {
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    
+    input, textarea, select {
+      -webkit-user-select: text;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    
+    button {
+      -webkit-appearance: none;
+      border-radius: 4px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -464,7 +636,7 @@ details p {
 
     <div class="slide">
       <h2>마음 전하실 곳</h2>
-      <p style="margin-bottom: 1.2rem; font-size: 1.05rem;">
+      <p style="margin-bottom: 1.2rem;">
         보내주신 따뜻한 마음과 축복의 말씀,<br>
 감사한 마음으로 소중히 받겠습니다.<br>
 함께 나눠주신 진심 잊지 않고<br>
@@ -478,25 +650,25 @@ details p {
         <button class="copy-btn" onclick="copyText('신한 987654-32-10987')">계좌번호 복사</button>
       </p>
     
-      <details style="margin-top: 2rem; font-family: 'NanumMyeongjo', serif;">
-        <summary style="font-size: 1.05rem; cursor: pointer; background: #e0d3ca; padding: 0.6rem 1rem; border-radius: 20px; display: inline-block; width: fit-content; margin: 1.5rem auto; text-align: center;">
+      <details style="margin-top: 2rem;">
+        <summary>
           혼주분께 연락하기
         </summary>
-        <div style="margin-top: 1.5rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
           <div style="text-align: center;">
-            <h3 style="margin-bottom: 0.5rem;">신랑측 혼주</h3>
+            <h3>신랑측 혼주</h3>
             <p style="color: #aaa;">비어있음</p>
             <p style="color: #aaa;">비어있음</p>
           </div>
     
           <div style="text-align: center;">
-            <h3 style="margin-bottom: 0.5rem;">신부측 혼주</h3>
+            <h3>신부측 혼주</h3>
             <p>아버지 맹대원</p>
-            <a href="sms:01047425456" class="copy-btn" style="margin: 0.3rem;">문자</a>
-            <a href="tel:01047425456" class="copy-btn" style="margin: 0.3rem;">전화</a>
+            <a href="sms:01047425456" class="copy-btn">문자</a>
+            <a href="tel:01047425456" class="copy-btn">전화</a>
             <p style="margin-top: 1rem;">어머니 박후남</p>
-            <a href="sms:01044195456" class="copy-btn" style="margin: 0.3rem;">문자</a>
-            <a href="tel:01044195456" class="copy-btn" style="margin: 0.3rem;">전화</a>
+            <a href="sms:01044195456" class="copy-btn">문자</a>
+            <a href="tel:01044195456" class="copy-btn">전화</a>
           </div>
         </div>
       </details>
@@ -556,7 +728,7 @@ details p {
         <input type="password" placeholder="비밀번호 (수정/삭제용)" required />
         <button type="submit">등록</button>
       </form>
-      <div id="guestbook" style="margin-top: 2rem; width: 80%; max-width: 500px;"></div>
+      <div id="guestbook" style="margin-top: 2rem; width: 90%; max-width: 500px;"></div>
     </div>
   </div>
   <div class="nav-buttons">
@@ -582,19 +754,42 @@ details p {
     <div class="wave-bar"></div>
     <div class="wave-bar"></div>
     <div class="wave-bar"></div>
-    <div id="musicProgress"></div>
   </div>
 </div>
-<script type="module" src="slide.js"></script>
+
 <script>
   let currentIndex = 0;
   const slider = document.getElementById("slider");
   const slides = slider.children;
   
   function copyText(text) {
-    navigator.clipboard.writeText(text).then(() => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("복사되었습니다!");
+      }).catch(() => {
+        fallbackCopyText(text);
+      });
+    } else {
+      fallbackCopyText(text);
+    }
+  }
+  
+  function fallbackCopyText(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
       alert("복사되었습니다!");
-    });
+    } catch (err) {
+      alert("복사 실패: " + text);
+    }
+    document.body.removeChild(textArea);
   }
   
   function moveSlide(direction) {
@@ -621,7 +816,6 @@ details p {
 
   const audio = document.getElementById('bgm');
   const musicBar = document.getElementById('musicBar');
-  const musicProgress = document.getElementById('musicProgress');
   let isMusicStarted = false;
 
   musicBar.addEventListener('click', (e) => {
@@ -629,7 +823,6 @@ details p {
       audio.play().then(() => {
         isMusicStarted = true;
       }).catch(() => {});
-    } else {
     }
   });
 
@@ -645,9 +838,34 @@ details p {
     e.preventDefault();
     alert('참석 여부가 제출되었습니다!');
   });
-  
-  function copyText(text) {
-    navigator.clipboard.writeText(text).then(() => alert('복사되었습니다!'));
+
+  let startX = 0;
+  let startY = 0;
+  let endX = 0;
+  let endY = 0;
+
+  document.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+
+  document.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    endY = e.changedTouches[0].clientY;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const diffX = startX - endX;
+    const diffY = startY - endY;
+    
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        moveSlide(1);
+      } else {
+        moveSlide(-1);
+      }
+    }
   }
 </script>
 </body>
