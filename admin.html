@@ -2,30 +2,75 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>관리자 페이지</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 767px)">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
-      font-family: 'NanumMyeongjo', serif;
+      font-family: 'Nanum Myeongjo', serif;
       background: #f9f4ef;
       padding: 2rem;
       color: #3a2d25;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
     }
+
+    h1 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      color: #3a2d25;
+      text-align: center;
+    }
+
     h2 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       border-bottom: 2px solid #a57e65;
       padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #3a2d25;
     }
+
     .entry {
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 1rem;
       margin-bottom: 1rem;
       background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .entry strong {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 700;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #3a2d25;
+    }
+
+    .entry p {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      line-height: 1.6;
+      margin: 0.5rem 0;
+      color: #5a4d42;
+    }
+
     button {
+      font-family: 'Nanum Myeongjo', serif;
       background: #a57e65;
       color: #fff;
       border: none;
@@ -33,21 +78,181 @@
       padding: 0.5rem 1rem;
       margin-top: 0.5rem;
       cursor: pointer;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      transition: background 0.3s ease;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    button:hover, button:active {
+      background: #8b6951;
+    }
+
     #login-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      padding: 1rem;
     }
+
     #main-content {
       display: none;
     }
+
     input[type="password"] {
-      padding: 0.5rem;
-      font-size: 1rem;
+      font-family: 'Nanum Myeongjo', serif;
+      padding: 0.8rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       margin-top: 1rem;
+      border: 1px solid #d4c5b9;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 300px;
+      background: white;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #a57e65;
+      box-shadow: 0 0 0 2px rgba(165, 126, 101, 0.2);
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+
+      body {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .entry {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .entry strong {
+        font-size: 1rem;
+      }
+
+      .entry p {
+        font-size: 0.9rem;
+        margin: 0.4rem 0;
+      }
+
+      button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      input[type="password"] {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+        max-width: 280px;
+      }
+
+      section {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+
+      .entry {
+        padding: 0.7rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .entry strong {
+        font-size: 0.95rem;
+      }
+
+      .entry p {
+        font-size: 0.85rem;
+      }
+
+      button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+      }
+
+      input[type="password"] {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        max-width: 260px;
+      }
+
+      #login-container {
+        padding: 0.5rem;
+      }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+      
+      input[type="password"] {
+        -webkit-user-select: text;
+        -webkit-appearance: none;
+        border-radius: 6px;
+      }
+      
+      button {
+        -webkit-appearance: none;
+        border-radius: 6px;
+      }
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Nanum Myeongjo', serif;
+      color: #8b6951;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 1.5rem;
+      color: #8b6951;
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      background: #f5f1ec;
+      border-radius: 8px;
+      margin: 1rem 0;
     }
   </style>
 </head>
@@ -63,12 +268,16 @@
 
     <section>
       <h2>RSVP 목록</h2>
-      <div id="rsvp-list"></div>
+      <div id="rsvp-list">
+        <div class="loading">데이터를 불러오는 중...</div>
+      </div>
     </section>
 
     <section>
       <h2>방명록 목록</h2>
-      <div id="guestbook-list"></div>
+      <div id="guestbook-list">
+        <div class="loading">데이터를 불러오는 중...</div>
+      </div>
     </section>
   </div>
 
@@ -90,53 +299,96 @@
         loadGuestbook();
       } else {
         alert('비밀번호가 틀렸습니다.');
+        document.getElementById('admin-password').value = '';
       }
     }
 
+    document.getElementById('admin-password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
     async function loadRSVPs() {
-      const q = query(collection(db, 'rsvps'), orderBy('createdAt', 'desc'));
-      const snapshot = await getDocs(q);
-      rsvpList.innerHTML = '';
-      snapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const div = document.createElement('div');
-        div.className = 'entry';
-        div.innerHTML = `
-          <strong>${data.name}</strong> - ${data.status}<br>
-          <p>${data.message || ''}</p>
-          <button onclick="deleteRSVP('${docSnap.id}')">삭제</button>
-        `;
-        rsvpList.appendChild(div);
-      });
+      try {
+        const q = query(collection(db, 'rsvps'), orderBy('createdAt', 'desc'));
+        const snapshot = await getDocs(q);
+        rsvpList.innerHTML = '';
+        
+        if (snapshot.empty) {
+          rsvpList.innerHTML = '<div class="empty-state">아직 RSVP가 없습니다.</div>';
+          return;
+        }
+
+        snapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const div = document.createElement('div');
+          div.className = 'entry';
+          div.innerHTML = `
+            <strong>${data.name}</strong> - ${data.status === 'yes' ? '참석' : '불참'}<br>
+            <p>${data.message || '메시지 없음'}</p>
+            <button onclick="deleteRSVP('${docSnap.id}')">삭제</button>
+          `;
+          rsvpList.appendChild(div);
+        });
+      } catch (error) {
+        rsvpList.innerHTML = '<div class="empty-state">데이터를 불러오는 중 오류가 발생했습니다.</div>';
+        console.error('RSVP 로딩 오류:', error);
+      }
     }
 
     async function loadGuestbook() {
-      const q = query(collection(db, 'guestbook'), orderBy('createdAt', 'desc'));
-      const snapshot = await getDocs(q);
-      guestbookList.innerHTML = '';
-      snapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const div = document.createElement('div');
-        div.className = 'entry';
-        div.innerHTML = `
-          <strong>${data.name}</strong><br>
-          <p>${data.message}</p>
-          <button onclick="deleteGuestbook('${docSnap.id}')">삭제</button>
-        `;
-        guestbookList.appendChild(div);
-      });
+      try {
+        const q = query(collection(db, 'guestbook'), orderBy('createdAt', 'desc'));
+        const snapshot = await getDocs(q);
+        guestbookList.innerHTML = '';
+        
+        if (snapshot.empty) {
+          guestbookList.innerHTML = '<div class="empty-state">아직 방명록이 없습니다.</div>';
+          return;
+        }
+
+        snapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const div = document.createElement('div');
+          div.className = 'entry';
+          div.innerHTML = `
+            <strong>${data.name}</strong><br>
+            <p>${data.message}</p>
+            <button onclick="deleteGuestbook('${docSnap.id}')">삭제</button>
+          `;
+          guestbookList.appendChild(div);
+        });
+      } catch (error) {
+        guestbookList.innerHTML = '<div class="empty-state">데이터를 불러오는 중 오류가 발생했습니다.</div>';
+        console.error('방명록 로딩 오류:', error);
+      }
     }
 
     window.deleteRSVP = async function(id) {
-      await deleteDoc(doc(db, 'rsvps', id));
-      alert('RSVP 삭제됨');
-      loadRSVPs();
+      if (confirm('정말 삭제하시겠습니까?')) {
+        try {
+          await deleteDoc(doc(db, 'rsvps', id));
+          alert('RSVP가 삭제되었습니다.');
+          loadRSVPs();
+        } catch (error) {
+          alert('삭제 중 오류가 발생했습니다.');
+          console.error('RSVP 삭제 오류:', error);
+        }
+      }
     }
 
     window.deleteGuestbook = async function(id) {
-      await deleteDoc(doc(db, 'guestbook', id));
-      alert('방명록 삭제됨');
-      loadGuestbook();
+      if (confirm('정말 삭제하시겠습니까?')) {
+        try {
+          await deleteDoc(doc(db, 'guestbook', id));
+          alert('방명록이 삭제되었습니다.');
+          loadGuestbook();
+        } catch (error) {
+          alert('삭제 중 오류가 발생했습니다.');
+          console.error('방명록 삭제 오류:', error);
+        }
+      }
     }
   </script>
 </body>
