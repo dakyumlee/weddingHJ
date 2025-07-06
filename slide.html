@@ -120,14 +120,13 @@
       line-height: 1.6;
     }
     
-    .nav-buttons {
-      padding: 0 1rem;
+    .slide-indicator {
       bottom: 15px;
     }
     
-    .nav-buttons button {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.9rem;
+    .slide-dot {
+      width: 6px;
+      height: 6px;
     }
     
     iframe {
@@ -240,9 +239,8 @@
       height: 180px !important;
     }
     
-    .nav-buttons button {
-      padding: 0.5rem 1rem;
-      font-size: 0.8rem;
+    .slide-indicator {
+      bottom: 10px;
     }
     
     .timeline-item {
@@ -318,36 +316,28 @@
     font-size: clamp(0.85rem, 2vw, 0.95rem);
   }
 
-  .nav-buttons {
-    font-family: 'Nanum Myeongjo', serif;
+  .slide-indicator {
     position: absolute;
-    bottom: 24px;
-    width: 100%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
+    gap: 8px;
     z-index: 10;
+    pointer-events: none;
   }
   
-  .nav-buttons button {
-    background: #6b5344;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.6rem;
-    border-radius: 4px;
-    font-size: clamp(0.85rem, 2.2vw, 1rem);
-    cursor: pointer;
-    font-family: 'Nanum Myeongjo', serif;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  .slide-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(107, 83, 68, 0.3);
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
   }
   
-  .nav-buttons button:active {
-    background: #4a3d32;
-    transform: scale(0.98);
+  .slide-dot.active {
+    background: #6b5344;
+    transform: scale(1.2);
   }
 
   .rsvp-form, .guest-form {
@@ -731,9 +721,13 @@
       <div id="guestbook" style="margin-top: 2rem; width: 90%; max-width: 500px;"></div>
     </div>
   </div>
-  <div class="nav-buttons">
-    <button onclick="moveSlide(-1)">← 이전</button>
-    <button onclick="moveSlide(1)">다음 →</button>
+  <div class="slide-indicator">
+    <div class="slide-dot active"></div>
+    <div class="slide-dot"></div>
+    <div class="slide-dot"></div>
+    <div class="slide-dot"></div>
+    <div class="slide-dot"></div>
+    <div class="slide-dot"></div>
   </div>
 </div>
 <div id="musicBarContainer">
@@ -794,6 +788,7 @@
   
   function moveSlide(direction) {
     slides[currentIndex].classList.remove('active');
+    document.querySelectorAll('.slide-dot')[currentIndex].classList.remove('active');
     
     const total = slides.length;
     currentIndex = (currentIndex + direction + total) % total;
@@ -801,6 +796,7 @@
     
     setTimeout(() => {
       slides[currentIndex].classList.add('active');
+      document.querySelectorAll('.slide-dot')[currentIndex].classList.add('active');
     }, 100);
   }
   
@@ -859,7 +855,7 @@
     const diffX = startX - endX;
     const diffY = startY - endY;
     
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 80) {
       if (diffX > 0) {
         moveSlide(1);
       } else {
